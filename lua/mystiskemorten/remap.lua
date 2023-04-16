@@ -7,19 +7,20 @@ vim.g.maplocalleader = ' '
 
 vim.api.nvim_set_keymap("n", "<leader>pv", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
 
--- klipp og lim tekst til neste linje
+-- Move current line up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- trim space
+-- Trim space
 vim.keymap.set("n", "J", "mzJ`z")
 
--- jump up and down in file
+-- Jump p/down in file by 10 lines
 vim.keymap.set("n", "<C-d>", "10jzz")
 vim.keymap.set("n", "<C-u>", "10kzz")
 
--- yank hele linja
+-- Yank from position to end of line
 vim.keymap.set("n", "Y", "yg$")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
@@ -35,14 +36,16 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- quickfix keymaps
+-- Quickfix navigation
 vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz")
 
+-- Replace text
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>rc", [["hy:%s/<C-r>h//gc<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>ri", [["hy:%s/<C-r>h//gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>rq", [[:cdo s/foo/bar/g]])
+
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Keymaps for better default experience
@@ -53,5 +56,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Window width is increased/decreased with 10 by default
 vim.keymap.set("n", "<C-W>>", "<C-W>10>")
 vim.keymap.set("n", "<C-W><", "<C-W>10<")
+
+vim.keymap.set(
+  "n",
+  "<leader>ss",
+  "<cmd>call personal#session#save()<cr>",
+  { buffer = true, desc = '[S]ave session' }
+)
