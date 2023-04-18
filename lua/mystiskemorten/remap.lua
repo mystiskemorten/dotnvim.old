@@ -66,3 +66,8 @@ vim.keymap.set(
   "<cmd>call personal#session#save()<cr>",
   { buffer = true, desc = '[S]ave session' }
 )
+
+-- Move to start of line/end of line
+vim.keymap.set({ "n", "v" }, "H", "^")
+vim.keymap.set({ "n", "v" }, "L", "$")
+
