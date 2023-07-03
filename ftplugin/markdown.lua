@@ -1,3 +1,5 @@
+vim.opt_local.wrap = true
+
 vim.fn["personal#markdown#init"]()
 
 vim.bo.indentexpr = "personal#markdown#indentexpr(v:lnum)"
