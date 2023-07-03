@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v1.x',
 		requires = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },
@@ -26,7 +27,12 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+	use { 'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+	}
 	use('nvim-treesitter/playground')
 	use("nvim-treesitter/nvim-treesitter-context");
 
@@ -45,7 +51,10 @@ return require('packer').startup(function(use)
 	use 'ray-x/guihua.lua'
 
 	-- Fuzzy Finder (files, lsp, etc)
-	use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		-- or                            , branch = '0.1.x',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
@@ -59,7 +68,13 @@ return require('packer').startup(function(use)
 		tag = "*" -- Use for stability; omit to use `main` branch for the latest features
 	})
 	use("windwp/nvim-autopairs")
-	use("theprimeagen/refactoring.nvim")
+	use {
+		"theprimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" }
+		}
+	}
 	use { 'sindrets/diffview.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' } }
 	use("lervag/wiki.vim")
 	use {
