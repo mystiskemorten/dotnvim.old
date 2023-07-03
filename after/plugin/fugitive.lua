@@ -1,10 +1,10 @@
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
-local my_fugitive = vim.api.nvim_create_augroup("my_fugutive", {})
+local Mystiskemorten_Fugutive = vim.api.nvim_create_augroup("Mystiskemorten_Fugutive", {})
 
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufWinEnter", {
-    group = my_fugutive,
+    group = Mystiskemorten_Fugutive,
     pattern = "*",
     callback = function()
         if vim.bo.ft ~= "fugitive" then
@@ -12,14 +12,14 @@ autocmd("BufWinEnter", {
         end
 
         local bufnr = vim.api.nvim_get_current_buf()
-        local opts = {buffer = bufnr, remap = false}
+        local opts = { buffer = bufnr, remap = false }
         vim.keymap.set("n", "<leader>p", function()
             vim.cmd.Git('push')
         end, opts)
 
         -- rebase always
         vim.keymap.set("n", "<leader>P", function()
-            vim.cmd.Git({'pull',  '--rebase'})
+            vim.cmd.Git({ 'pull', '--rebase' })
         end, opts)
 
         -- NOTE: It allows me to easily set the branch i am pushing and any tracking
@@ -27,6 +27,3 @@ autocmd("BufWinEnter", {
         vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts);
     end,
 })
-
-vim.keymap.set("n", "gf", "<cmd>diffget //2<CR>")
-vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
