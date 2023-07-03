@@ -38,6 +38,7 @@ endfunction
 function! personal#markdown#place_signs() abort " {{{1
   let l:continue = 0
   let l:file = expand('%')
+  if empty(l:file) | return | endif
 
   execute 'sign unplace * file=' . l:file
 
@@ -97,7 +98,7 @@ function! personal#markdown#foldlevel(lnum) abort " {{{1
           \ : '='
   endif
 
-  if l:line =~# g:wiki#rx#header
+  if l:line =~# g:wiki#rx#header_md_atx
     return '>' . len(matchstr(l:line, '#*'))
   endif
 
