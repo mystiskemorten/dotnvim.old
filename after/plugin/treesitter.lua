@@ -1,10 +1,10 @@
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'go', 'lua', 'python', 'typescript', 'help', 'bash', 'markdown' },
+  ensure_installed = { 'c', 'go', 'lua', 'python', 'typescript', 'vimdoc', 'bash', 'markdown' },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
-  
+
   -- ignore_install = {"markdown"}
 
   -- Automatically install missing parsers when entering buffer
