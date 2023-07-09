@@ -74,7 +74,9 @@ vim.keymap.set({ "n", "v" }, "L", "$")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+  vim.cmd("so")
+end,
+  { desc = 'Source' }
+)
 
-vim.api.nvim_set_keymap("n", "<leader>pz", ":ZenMode<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>pz", ":ZenMode<cr>", { silent = true, noremap = true, desc = '[P]roject [Z]enMode'})
