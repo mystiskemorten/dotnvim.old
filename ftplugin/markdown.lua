@@ -3,8 +3,6 @@ vim.opt_local.colorcolumn = "0"
 
 vim.fn["personal#markdown#init"]()
 
-vim.cmd(":ZenMode")
-
 vim.bo.indentexpr = "personal#markdown#indentexpr(v:lnum)"
 
 vim.keymap.set(
