@@ -5,7 +5,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.api.nvim_set_keymap("n", "<leader>pv", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>p", ":NvimTreeToggle<cr>", { silent = true, noremap = true , desc = 'View [P]roject'})
 
 -- Move current line up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -79,4 +79,4 @@ end,
   { desc = 'Source' }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>pz", ":ZenMode<cr>", { silent = true, noremap = true, desc = '[P]roject [Z]enMode'})
+vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>", { silent = true, noremap = true, desc = '[Z]enMode'})
