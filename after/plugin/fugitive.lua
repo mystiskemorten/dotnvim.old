@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+vim.keymap.set("n", "<leader>gd", vim.cmd.Git);
 
 local Mystiskemorten_Fugutive = vim.api.nvim_create_augroup("Mystiskemorten_Fugutive", {})
 
